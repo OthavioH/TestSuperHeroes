@@ -1,18 +1,41 @@
-import React from 'react';
+import React,{useEffect, useState} from 'react';
 import {Link} from 'react-router-dom';
 
-import {Navigator,NavButton,NavRow} from './styles';
+import {Navigator,NavButton,NavRow,NavLogout} from './styles';
 
 
-const Nav = ()=>(
-    <Navigator>
-        <NavRow>
-            <Link to="/"><NavButton>Login</NavButton></Link>
-            <Link to="/Register"><NavButton>Register</NavButton></Link>
-            <Link to="/Account"><NavButton>Edit account</NavButton></Link>
-            <Link to="/Users"><NavButton>List Users</NavButton></Link>
-        </NavRow>
-    </Navigator>
-)
 
-export default Nav;
+export default function Nav(props){
+
+    const token = localStorage.getItem("token");
+    const user_type = localStorage.getItem("user_type");
+    console.log(user_type)
+    const [goBack,setGoBack] = useState(false);
+
+    useEffect(()=>{
+        if(props.onlyGoBack===true){
+            setGoBack(true);
+        }
+        else{
+            setGoBack(false);
+        }
+    },[props])
+
+    return(
+        <Navigator>
+            
+                {goBack===true ? (
+                    <NavRow>
+                        <Link to="/"><NavButton>Voltar para os personagens</NavButton></Link>
+                    </NavRow>
+                ) : (
+                    <NavRow>
+                        {user_type==='admin' && token ?<Link to="/registerPersonagem"><NavButton>Registrar Personagem</NavButton></Link>:null}
+                        <Link to="/"><NavButton>Personagens</NavButton></Link>
+                        {!token ? (<Link to="/register"><NavButton>Cadastrar Usuário</NavButton></Link>) : (<Link to="/logout"><NavLogout>Logout</NavLogout></Link>)}
+                        {!token ? (<Link to="/login"><NavButton>Login</NavButton></Link>) :null}
+                    </NavRow>
+                )}
+        </Navigator>
+    );
+}
