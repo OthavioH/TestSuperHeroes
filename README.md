@@ -1,6 +1,6 @@
 # Super Heroes Test
 
-Only a test made by my friend to test some skills.
+A test made by my friend to test some skills creating an API.
 
 Simple CRUD made with Sequelize to be able to use mysql as project's database.
 
