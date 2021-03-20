@@ -14,3 +14,4 @@ Simple CRUD made with Sequelize to be able to use mysql as project's database.
 - Axios
 - Cors
 - Express
+- Styled components
