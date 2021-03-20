@@ -10,7 +10,7 @@ Made with
 - Node.JS
 - React.JS
 - Sequelize
-- Mysql2
+- Umbler
 - Axios
 - Cors
 - Express
