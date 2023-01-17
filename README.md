@@ -8,7 +8,6 @@ Web software made to test some skills creating an API.
 - Node.JS
 - React.JS
 - Sequelize
-- Umbler
 - Axios
 - Cors
 - Express
